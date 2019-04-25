@@ -4,7 +4,7 @@
 /dist
 /tmp
 /out-tsc
-/public
+/week2/public
 oj-client/dist
 # Only exists if Bazel was run
 /bazel-out
