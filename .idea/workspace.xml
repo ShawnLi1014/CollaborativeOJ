@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4e784c7b-f51d-4383-bd57-159024035a84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/week2/oj-server/models/problemModel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/week2/oj-server/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/week2/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/week2/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/week2/oj-client/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/week2/oj-client/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/week2/oj-client/src/app/components/new-problem/new-problem.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/week2/oj-client/src/app/components/new-problem/new-problem.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/week2/oj-client/src/app/components/problem-detail/problem-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/week2/oj-client/src/app/components/problem-detail/problem-detail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/week2/oj-client/src/app/components/problem-list/problem-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/week2/oj-client/src/app/components/problem-list/problem-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/week2/oj-client/src/app/services/data.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/week2/oj-client/src/app/services/data.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/week2/oj-server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/week2/oj-server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/week2/oj-server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/week2/oj-server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/week2/oj-server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/week2/oj-server/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/week2/oj-server/services/problemService.js" beforeDir="false" afterPath="$PROJECT_DIR$/week2/oj-server/services/problemService.js" afterDir="false" />
-    </list>
+    <list default="true" id="4e784c7b-f51d-4383-bd57-159024035a84" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -36,7 +22,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/week2/oj-server/routes/rest.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
@@ -84,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/week2/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+            <state relative-caret-position="650">
+              <caret line="50" selection-start-line="50" selection-end-line="50" />
             </state>
           </provider>
         </entry>
@@ -169,10 +155,10 @@
         <option value="$PROJECT_DIR$/week2/oj-server/.env" />
         <option value="$PROJECT_DIR$/week2/oj-server/server.js" />
         <option value="$PROJECT_DIR$/week2/oj-client/src/app/components/problem-detail/problem-detail.component.ts" />
-        <option value="$PROJECT_DIR$/week2/.gitignore" />
         <option value="$PROJECT_DIR$/week2/oj-client/src/app/services/data.service.ts" />
         <option value="$PROJECT_DIR$/week2/oj-client/src/app/components/new-problem/new-problem.component.ts" />
         <option value="$PROJECT_DIR$/week2/oj-server/services/problemService.js" />
+        <option value="$PROJECT_DIR$/week2/.gitignore" />
       </list>
     </option>
   </component>
@@ -356,12 +342,12 @@
       <workItem from="1556009704330" duration="1402000" />
       <workItem from="1556105098001" duration="2130000" />
       <workItem from="1556107835287" duration="8383000" />
-      <workItem from="1556188700459" duration="9979000" />
+      <workItem from="1556188700459" duration="10201000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37780000" />
+    <option name="totallyTimeSpent" value="38002000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -668,13 +654,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/week2/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/week2/oj-client/src/app/components/problem-detail/problem-detail.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
@@ -744,6 +723,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="15" column="3" lean-forward="true" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/week2/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
         </state>
       </provider>
     </entry>
