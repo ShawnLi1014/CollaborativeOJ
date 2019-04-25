@@ -4,6 +4,8 @@
 /dist
 /tmp
 /out-tsc
+/public
+oj-client/dist
 # Only exists if Bazel was run
 /bazel-out
 
@@ -44,3 +46,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#env
+.env
