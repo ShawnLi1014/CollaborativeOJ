@@ -14,10 +14,9 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getProblems(): Observable<Problem[]> {
-    this.http.get('api/v1/problems')
+    this.http.get<Problem[]>('api/v1/problems')
       .toPromise()
       .then(res => {
-        // @ts-ignore
         this.problemsSource.next(res);
       })
       .catch(this.handleError);
