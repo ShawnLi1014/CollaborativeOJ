@@ -1,34 +1,3 @@
-var problems = [{
-        id: 1,
-        name: 'Two Sum',
-        desc: 'hhhh',
-        difficulty: 'easy'
-    },
-    {
-        id: 2,
-        name: '3Sum',
-        desc: 'hhhh',
-        difficulty: 'medium'
-    },
-    {
-        id: 3,
-        name: '4Sum',
-        desc: 'hhhh',
-        difficulty: 'medium'
-    },
-    {
-        id: 4,
-        name: 'Two Sum',
-        desc: 'hhhh',
-        difficulty: 'hard'
-    },
-    {
-        id: 5,
-        name: 'Two Sum',
-        desc: 'hhhh',
-        difficulty: 'super'
-    }];
-
 var ProblemModel = require('../models/problemModel');
 
 var getProblems = function() {
