@@ -9,16 +9,21 @@ export class AuthService {
   private _idToken: string;
   private _accessToken: string;
   private _expiresAt: number;
+  private _scopes: string;
+
+  userProfile: any;
+  requestedScopes: string = 'openid profile read:messages write:messages';
+
 
   auth0 = new auth0.WebAuth({
     clientID: 'iqoGKUlDacORUUuYaT-cMKjR5v_dFsVb',
     domain: 'dev-2ewo6apy.auth0.com',
     responseType: 'token id_token',
     redirectUri: 'http://localhost:3000/callback',
-    scope: 'openid profile'
+    scope: this.requestedScopes
   });
 
-  userProfile: any;
+
   private observer: Observer<string>;
   userNameChange$: Observable<string> = new Observable(obs => this.observer = obs);
 
@@ -26,6 +31,7 @@ export class AuthService {
     this._idToken = '';
     this._accessToken = '';
     this._expiresAt = 0;
+    this._scopes = '';
   }
 
   get accessToken(): string {
@@ -38,6 +44,7 @@ export class AuthService {
 
   public login(): void {
     this.auth0.authorize();
+    console.log(this.userProfile);
   }
 
   public handleAuthentication(): void {
@@ -57,11 +64,19 @@ export class AuthService {
   }
 
   private localLogin(authResult): void {
+    const scopes = authResult.scope || this.requestedScopes || '';
     // Set the time that the Access Token will expire at
     const expiresAt = (authResult.expiresIn * 1000) + Date.now();
+    localStorage.setItem('expires_at', JSON.stringify(expiresAt));
     this._accessToken = authResult.accessToken;
     this._idToken = authResult.idToken;
     this._expiresAt = expiresAt;
+    this._scopes = JSON.stringify(scopes);
+  }
+
+  public userHasScopes(scopes: Array<string>): boolean {
+    const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
+    return scopes.every(scope => grantedScopes.includes(scope));
   }
 
   public renewTokens(): void {
@@ -89,6 +104,7 @@ export class AuthService {
   public isAuthenticated(): boolean {
     // Check whether the current time is past the
     // access token's expiry time
+    // const expiresAt = localStorage.getItem('expires_at');
     return (this._accessToken &&  Date.now()) < this._expiresAt;
   }
 
@@ -101,6 +117,7 @@ export class AuthService {
     this.auth0.client.userInfo(this._accessToken, (err, profile) => {
       if (profile) {
         self.userProfile = profile;
+        localStorage.setItem('profile', profile);
         this.observer.next(profile.nickname);
       }
       cb(err, profile);

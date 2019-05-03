@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
         this.profile = profile;
       });
     }
+    console.log(this.profile);
   }
 
 }

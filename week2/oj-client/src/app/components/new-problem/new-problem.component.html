@@ -1,4 +1,5 @@
-<div>
+<!--<div *ngIf="auth.isAuthenticated() && auth.userHasScopes(['write:messages'])">-->
+<div *ngIf="authGuard.isAdmin()">
   <form #formRef="ngForm">
     <div class="form-group">
       <label for="problemName">Problem Name</label>

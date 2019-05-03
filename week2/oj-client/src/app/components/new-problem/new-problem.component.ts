@@ -20,7 +20,8 @@ export class NewProblemComponent implements OnInit {
 
   newProblem: Problem = Object.assign({}, DEFAULT_PROBLEM);
 
-  constructor(@Inject('data') private data) { }
+  constructor(@Inject('data') private data,
+              @Inject('authGuard') private authGuard) { }
 
   ngOnInit() {
   }
@@ -30,4 +31,6 @@ export class NewProblemComponent implements OnInit {
       .catch(error => console.log(error.body));
     this.newProblem = Object.assign({}, DEFAULT_PROBLEM);
   }
+
+
 }
