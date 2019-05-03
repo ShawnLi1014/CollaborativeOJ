@@ -9,10 +9,9 @@ export class AuthService {
   private _idToken: string;
   private _accessToken: string;
   private _expiresAt: number;
-  private _scopes: string;
 
   userProfile: any;
-  requestedScopes: string = 'openid profile read:messages write:messages';
+  requestedScopes: string = 'openid profile';
 
 
   auth0 = new auth0.WebAuth({
@@ -31,7 +30,6 @@ export class AuthService {
     this._idToken = '';
     this._accessToken = '';
     this._expiresAt = 0;
-    this._scopes = '';
   }
 
   get accessToken(): string {
@@ -64,19 +62,12 @@ export class AuthService {
   }
 
   private localLogin(authResult): void {
-    const scopes = authResult.scope || this.requestedScopes || '';
     // Set the time that the Access Token will expire at
     const expiresAt = (authResult.expiresIn * 1000) + Date.now();
     localStorage.setItem('expires_at', JSON.stringify(expiresAt));
     this._accessToken = authResult.accessToken;
     this._idToken = authResult.idToken;
     this._expiresAt = expiresAt;
-    this._scopes = JSON.stringify(scopes);
-  }
-
-  public userHasScopes(scopes: Array<string>): boolean {
-    const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
-    return scopes.every(scope => grantedScopes.includes(scope));
   }
 
   public renewTokens(): void {
