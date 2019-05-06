@@ -379,6 +379,7 @@ var EditorComponent = /** @class */ (function () {
             console.log('cursor moves: ' + JSON.stringify(cursor));
             _this.collaboration.cursorMove(JSON.stringify(cursor));
         });
+        this.collaboration.restoreBuffer();
     };
     EditorComponent.prototype.setLanguage = function (language) {
         this.language = language;
@@ -995,6 +996,9 @@ var CollaborationService = /** @class */ (function () {
     };
     CollaborationService.prototype.cursorMove = function (cursor) {
         this.collaborationSocket.emit('cursorMove', cursor);
+    };
+    CollaborationService.prototype.restoreBuffer = function () {
+        this.collaborationSocket.emit('restoreBuffer');
     };
     CollaborationService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
