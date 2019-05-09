@@ -11,15 +11,23 @@ export class ProblemListComponent implements OnInit {
 
   problems: Problem[] = [];
   subscriptionProblems: Subscription;
+  subscriptionInput: Subscription;
 
-  constructor(@Inject('data') private data) { }
+  searchTerm = '';
+  constructor(@Inject('data') private data,
+              @Inject('input') private input) { }
 
   ngOnInit() {
     this.getProblems();
+    this.getSearchTerm();
   }
 
   getProblems(): void {
     this.subscriptionProblems = this.data.getProblems().subscribe(problems => this.problems = problems);
+  }
+
+  getSearchTerm(): void {
+    this.subscriptionInput = this.input.getInput().subscribe(inputTerm => this.searchTerm = inputTerm);
   }
 
   ngOnDestory() {

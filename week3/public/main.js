@@ -115,6 +115,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_callback_callback_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/callback/callback.component */ "./src/app/components/callback/callback.component.ts");
 /* harmony import */ var _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/profile/profile.component */ "./src/app/components/profile/profile.component.ts");
 /* harmony import */ var _components_editor_editor_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/editor/editor.component */ "./src/app/components/editor/editor.component.ts");
+/* harmony import */ var _pipes$_search_pipe__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./pipes$/search.pipe */ "./src/app/pipes$/search.pipe.ts");
+/* harmony import */ var _services_input_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./services/input.service */ "./src/app/services/input.service.ts");
+
+
+
 
 
 
@@ -147,11 +152,13 @@ var AppModule = /** @class */ (function () {
                 _components_callback_callback_component__WEBPACK_IMPORTED_MODULE_15__["CallbackComponent"],
                 _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_16__["ProfileComponent"],
                 _components_editor_editor_component__WEBPACK_IMPORTED_MODULE_17__["EditorComponent"],
+                _pipes$_search_pipe__WEBPACK_IMPORTED_MODULE_18__["SearchPipe"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"],
                 _app_routes__WEBPACK_IMPORTED_MODULE_5__["routing"]
             ],
             providers: [{
@@ -169,6 +176,10 @@ var AppModule = /** @class */ (function () {
                 {
                     provide: 'collaboration',
                     useClass: _services_collaboration_service__WEBPACK_IMPORTED_MODULE_11__["CollaborationService"]
+                },
+                {
+                    provide: 'input',
+                    useClass: _services_input_service__WEBPACK_IMPORTED_MODULE_19__["InputService"]
                 }],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
@@ -427,7 +438,7 @@ module.exports = "@media (min-width: 992px) {\n  .animate {\n    animation-durat
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <nav class=\"navbar navbar-expand-lg navbar-light bg-light justify-content-center\">\n    <a class=\"navbar-brand mb-0 h1\" href=\"#\">{{title}}</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n\n    <div class=\"collapse navbar-collapse justify-content-end\" id=\"navbarSupportedContent\">\n      <ul class=\"navbar-nav\">\n        <li class=\"nav-item\" *ngIf=\"!isAuthenticated()\">\n          <a class=\"nav-link\" (click)=\"login()\">Log In</a>\n        </li>\n        <li class=\"nav-item\" *ngIf=\"!isAuthenticated()\">\n          <a class=\"nav-link\" (click)=\"login()\">Sign Up</a>\n        </li>\n        <li class=\"nav-item dropdown\" *ngIf=\"isAuthenticated()\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n            {{username}}\n          </a>\n          <div class=\"dropdown-menu animate slideIn\" aria-labelledby=\"navbarDropdown\">\n            <a class=\"dropdown-item\" href=\"#\">My Submissions</a>\n            <a class=\"dropdown-item\" href=\"#\">My Favorites</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" [routerLink]=\"['/profile']\">My Profile</a>\n            <a class=\"dropdown-item\" (click)=\"logout()\">Log Out</a>\n          </div>\n        </li>\n      </ul>\n      <form class=\"form-inline my-2 my-lg-0\">\n        <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n      </form>\n    </div>\n  </nav>\n</div>\n"
+module.exports = "<div>\n  <nav class=\"navbar navbar-expand-lg navbar-light bg-light justify-content-center\">\n    <a class=\"navbar-brand mb-0 h1\" href=\"#\">{{title}}</a>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n\n    <div class=\"collapse navbar-collapse justify-content-end\" id=\"navbarSupportedContent\">\n      <ul class=\"navbar-nav\">\n        <li class=\"nav-item\" *ngIf=\"!isAuthenticated()\">\n          <a class=\"nav-link\" (click)=\"login()\">Log In</a>\n        </li>\n        <li class=\"nav-item\" *ngIf=\"!isAuthenticated()\">\n          <a class=\"nav-link\" (click)=\"login()\">Sign Up</a>\n        </li>\n        <li class=\"nav-item dropdown\" *ngIf=\"isAuthenticated()\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n            {{username}}\n          </a>\n          <div class=\"dropdown-menu animate slideIn\" aria-labelledby=\"navbarDropdown\">\n            <a class=\"dropdown-item\" href=\"#\">My Submissions</a>\n            <a class=\"dropdown-item\" href=\"#\">My Favorites</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" [routerLink]=\"['/profile']\">My Profile</a>\n            <a class=\"dropdown-item\" (click)=\"logout()\">Log Out</a>\n          </div>\n        </li>\n      </ul>\n      <form class=\"form-inline my-2 my-lg-0\" (ngSubmit)=\"searchProblem()\">\n        <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" [formControl]=\"searchBox\" aria-label=\"Search\">\n        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n      </form>\n    </div>\n  </nav>\n</div>\n"
 
 /***/ }),
 
@@ -443,16 +454,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
+
 
 
 var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent(auth) {
+    function NavbarComponent(auth, input, router) {
         this.auth = auth;
+        this.input = input;
+        this.router = router;
         this.title = "Let's Code";
+        this.searchBox = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]();
     }
     NavbarComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.auth.userNameChange$.subscribe(function (username) { return _this.username = username; });
+        var debouncedInput = this.searchBox.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["debounceTime"])(500));
+        this.subscription = debouncedInput.subscribe(function (term) { return _this.input.changeInput(term); });
+    };
+    NavbarComponent.prototype.ngOnDestory = function () {
+        this.subscription.unsubscribe();
+    };
+    NavbarComponent.prototype.searchProblem = function () {
+        this.router.navigate(['/problems']);
     };
     NavbarComponent.prototype.login = function () {
         this.auth.login();
@@ -470,7 +498,8 @@ var NavbarComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/components/navbar/navbar.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])('auth')),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])('input')),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object, Object, _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], NavbarComponent);
     return NavbarComponent;
 }());
@@ -637,7 +666,7 @@ module.exports = ".difficulty {\n  min-width: 65px;\n  margin-right: 10px;\n}\n\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <app-new-problem></app-new-problem>\n  <div class=\"list-group\">\n    <a class=\"list-group-item list-group-item-action\" *ngFor=\"let problem of problems\" [routerLink]=\"['/problems', problem.id]\" >\n      <span class=\"{{'pull-left badge difficulty diff-' + problem.difficulty.toLocaleLowerCase()}}\">{{problem.difficulty}}</span>\n      <strong class=\"title\">{{problem.id}}. {{problem.name}}</strong>\n    </a>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <app-new-problem></app-new-problem>\n  <div class=\"list-group\">\n    <a class=\"list-group-item list-group-item-action\" *ngFor=\"let problem of problems | search: searchTerm\" [routerLink]=\"['/problems', problem.id]\" >\n      <span class=\"{{'pull-left badge difficulty diff-' + problem.difficulty.toLocaleLowerCase()}}\">{{problem.difficulty | uppercase}}</span>\n      <strong class=\"title\">{{problem.id}}. {{problem.name}}</strong>\n    </a>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -656,16 +685,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ProblemListComponent = /** @class */ (function () {
-    function ProblemListComponent(data) {
+    function ProblemListComponent(data, input) {
         this.data = data;
+        this.input = input;
         this.problems = [];
+        this.searchTerm = '';
     }
     ProblemListComponent.prototype.ngOnInit = function () {
         this.getProblems();
+        this.getSearchTerm();
     };
     ProblemListComponent.prototype.getProblems = function () {
         var _this = this;
         this.subscriptionProblems = this.data.getProblems().subscribe(function (problems) { return _this.problems = problems; });
+    };
+    ProblemListComponent.prototype.getSearchTerm = function () {
+        var _this = this;
+        this.subscriptionInput = this.input.getInput().subscribe(function (inputTerm) { return _this.searchTerm = inputTerm; });
     };
     ProblemListComponent.prototype.ngOnDestory = function () {
         this.subscriptionProblems.unsubscribe();
@@ -677,7 +713,8 @@ var ProblemListComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./problem-list.component.css */ "./src/app/components/problem-list/problem-list.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])('data')),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])('input')),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object, Object])
     ], ProblemListComponent);
     return ProblemListComponent;
 }());
@@ -748,6 +785,38 @@ var ProfileComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [Object])
     ], ProfileComponent);
     return ProfileComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pipes$/search.pipe.ts":
+/*!***************************************!*\
+  !*** ./src/app/pipes$/search.pipe.ts ***!
+  \***************************************/
+/*! exports provided: SearchPipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchPipe", function() { return SearchPipe; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var SearchPipe = /** @class */ (function () {
+    function SearchPipe() {
+    }
+    SearchPipe.prototype.transform = function (problems, term) {
+        return problems.filter(function (problem) { return problem.name.toLowerCase().includes(term); });
+    };
+    SearchPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
+            name: 'search'
+        })
+    ], SearchPipe);
+    return SearchPipe;
 }());
 
 
@@ -1078,6 +1147,45 @@ var DataService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], DataService);
     return DataService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/input.service.ts":
+/*!*******************************************!*\
+  !*** ./src/app/services/input.service.ts ***!
+  \*******************************************/
+/*! exports provided: InputService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InputService", function() { return InputService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
+
+
+var InputService = /** @class */ (function () {
+    function InputService() {
+        this.inputSubject$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]('');
+    }
+    InputService.prototype.changeInput = function (term) {
+        this.inputSubject$.next(term);
+    };
+    InputService.prototype.getInput = function () {
+        return this.inputSubject$.asObservable();
+    };
+    InputService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], InputService);
+    return InputService;
 }());
 
 

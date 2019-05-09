@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { routing } from './app.routes';
 
 import { AppComponent } from './app.component';
@@ -17,6 +18,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CallbackComponent } from './components/callback/callback.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditorComponent } from './components/editor/editor.component';
+import { SearchPipe } from './pipes$/search.pipe';
+import {InputService} from './services/input.service';
 
 
 @NgModule({
@@ -29,11 +32,13 @@ import { EditorComponent } from './components/editor/editor.component';
     CallbackComponent,
     ProfileComponent,
     EditorComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     routing
   ],
   providers: [{
@@ -51,6 +56,10 @@ import { EditorComponent } from './components/editor/editor.component';
     {
       provide: 'collaboration',
       useClass: CollaborationService
+    },
+    {
+      provide: 'input',
+      useClass: InputService
     }],
   bootstrap: [AppComponent]
 })
