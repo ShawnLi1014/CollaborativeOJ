@@ -15,7 +15,7 @@ var socketService = require('./services/socketService.js')(io);
 
 
 const url = process.env.DATABASEURL;
-mongoose.connect(url, { useNewUrlParser: true });
+mongoose.connect("mongodb://user:chaoren961014@ds147436.mlab.com:47436/coj", { useNewUrlParser: true });
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use ('/', indexRouter);
