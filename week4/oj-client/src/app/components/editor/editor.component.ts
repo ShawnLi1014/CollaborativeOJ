@@ -83,7 +83,6 @@ export class EditorComponent implements OnInit {
   resetEditor(): void {
     this.editor.getSession().setMode('ace/mode/' + this.languageMode[this.language]);
     this.editor.setValue(this.defaultContent[this.language]);
-    this.output = 'abc';
   }
 
   submit(): void {

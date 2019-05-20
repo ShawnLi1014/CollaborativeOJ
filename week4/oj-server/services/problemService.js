@@ -30,12 +30,12 @@ var addProblem = function(newProblem) {
             if(problem) {
                 reject("Problem name already exists");
             } else {
-                ProblemModel.countDocuments({}, function(err, num) {
-                    newProblem.id = num + 1;
+                ProblemModel.findOne({$query:{},$orderby:{id:-1}}, function(err, problem) {
+                    newProblem.id = problem.id + 1;
                     var mongoProblem = new ProblemModel(newProblem);
                     mongoProblem.save();
                     resolve(newProblem);
-                });
+                })
             }
         })
     })

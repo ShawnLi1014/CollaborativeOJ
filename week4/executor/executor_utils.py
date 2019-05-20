@@ -5,7 +5,7 @@ import uuid
 
 from docker.errors import *
 
-IMAGE_NAME = "letscode_executor"
+IMAGE_NAME = "shawnli1014/letscode"
 CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
 TEMP_BUILD_DIR = "%s/tmp" % CURRENT_DIR
 

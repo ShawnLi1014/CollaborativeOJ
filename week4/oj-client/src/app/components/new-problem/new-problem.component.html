@@ -3,23 +3,38 @@
   <form #formRef="ngForm">
     <div class="form-group">
       <label for="problemName">Problem Name</label>
-      <input type="text" class="form-control" id="problemName" name="problemName" placeholder="Enter Problem Name" [(ngModel)]="newProblem.name" required="true">
-
+      <input type="text" class="form-control" id="problemName" name="problemName" placeholder="Enter Problem Name" [(ngModel)]="newProblem.name" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please provide a problem name.
+      </div>
     </div>
     <div class="form-group">
       <label for="problemDesc">Problem Description</label>
-      <textarea type="text" rows="3" class="form-control" id="problemDesc" name="problemDesc" placeholder="Enter Problem Description" [(ngModel)]="newProblem.desc" required="true"></textarea>
-
+      <textarea type="text" rows="3" class="form-control" id="problemDesc" name="problemDesc" placeholder="Enter Problem Description" [(ngModel)]="newProblem.desc" required></textarea>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please provide problem description.
+      </div>
     </div>
     <div class="form-group">
       <label for="difficulty">Problem Difficulty</label>
-      <select type="text" class="form-control" id="difficulty" name="difficulty" [(ngModel)]="newProblem.difficulty"  required="true">
+      <select type="text" class="form-control" id="difficulty" name="difficulty" [(ngModel)]="newProblem.difficulty"  required>
         <option value="default" disabled selected>Select Difficulty</option>
         <option *ngFor="let difficulty of difficulties" [value]="difficulty">
           {{difficulty}}
         </option>
       </select>
-
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please select problem difficulty.
+      </div>
     </div>
     <div class="row">
       <div class="col-md-12">
