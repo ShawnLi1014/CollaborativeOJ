@@ -55,7 +55,7 @@ export class EditorComponent implements OnInit {
 
   initEditor() {
     this.editor = ace.edit('editor');
-    this.editor.setTheme('ace/theme/eclipse');
+    this.editor.setTheme('ace/theme/solarized_light');
     this.resetEditor();
     this.editor.$blockScrolling = Infinity;
     document.getElementsByTagName('textarea')[0].focus();

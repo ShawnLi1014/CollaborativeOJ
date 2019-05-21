@@ -12,7 +12,7 @@ module.exports = function(io) {
         console.log(socket);
         let sessionId = socket.handshake.query['sessionId'];
         socketIdToSessionId[socket.id] = sessionId;
-
+        console.log('collaboration' + collaborations);
         // add socket id to corresponding collaboration session participants
         if(sessionId in collaborations) {
             collaborations[sessionId]['participants'].push(socket.id);
@@ -68,9 +68,10 @@ module.exports = function(io) {
 
         socket.on('restoreBuffer', () => {
             let sessionId = socketIdToSessionId[socket.id];
-            console.log('restoring buffer fro session ' + sessionId + ', socket '+ socket.id);
+            console.log('restoring buffer for session ' + sessionId + ', socket '+ socket.id);
             if(sessionId in collaborations) {
                 let changeEvents = collaborations[sessionId]['cachedChangeEvents'];
+                console.log(changeEvents);
                 for(let i = 0; i < changeEvents.length; i++) {
                     socket.emit(changeEvents[i][0], changeEvents[i][1]);
                 }
@@ -84,9 +85,9 @@ module.exports = function(io) {
             cursor = JSON.parse(cursor);
             cursor['socketId'] = socket.id;
             let sessionId = socketIdToSessionId[socket.id];
-            if(sessionId in collaborations) {
-                collaborations[sessionId]['cachedChangeEvents'].push(['cursorMove', cursor, Date.now()]);
-            }
+            // if(sessionId in collaborations) {
+            //     collaborations[sessionId]['cachedChangeEvents'].push(['cursorMove', cursor, Date.now()]);
+            // }
             forwardEvents('cursorMove', cursor);
         });
 
