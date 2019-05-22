@@ -12,7 +12,7 @@ module.exports = function(io) {
         console.log(socket);
         let sessionId = socket.handshake.query['sessionId'];
         socketIdToSessionId[socket.id] = sessionId;
-        console.log('collaboration' + collaborations);
+        console.log(socketIdToSessionId);
         // add socket id to corresponding collaboration session participants
         if(sessionId in collaborations) {
             collaborations[sessionId]['participants'].push(socket.id);

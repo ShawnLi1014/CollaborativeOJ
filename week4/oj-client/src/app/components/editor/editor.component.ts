@@ -49,7 +49,7 @@ export class EditorComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.sessionId = params['id'];
       this.initEditor();
-      console.log(params);
+      console.log(params['id']);
     });
   }
 

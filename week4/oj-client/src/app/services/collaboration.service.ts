@@ -16,7 +16,8 @@ export class CollaborationService {
   constructor() { }
 
   init(editor: any, sessionId: string): void {
-    this.collaborationSocket = io(window.location.origin, {query: 'sessionId' + sessionId});
+    this.collaborationSocket = io(window.location.origin, {query: 'sessionId=' + sessionId});
+    console.log(this.collaborationSocket);
 
     this.collaborationSocket.on('change', (delta: string) => {
       console.log('collaboration: editor changes by ' + delta);
