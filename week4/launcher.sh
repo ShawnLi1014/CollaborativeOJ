@@ -8,7 +8,7 @@ npm install
 nodemon server.js &
 cd ../oj-client
 npm install
-ng build --watch &
+#ng build --prod --build-optimizer &
 cd ../executor
 pip2 install -r requirements.txt
 python2 executor_server.py &
