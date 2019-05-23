@@ -18,7 +18,7 @@ export class AuthService {
     clientID: 'iqoGKUlDacORUUuYaT-cMKjR5v_dFsVb',
     domain: 'dev-2ewo6apy.auth0.com',
     responseType: 'token id_token',
-    redirectUri: 'http://localhost:3000/callback',
+    redirectUri: window.location + 'callback',
     scope: this.requestedScopes
   });
 
