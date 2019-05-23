@@ -11,4 +11,4 @@ npm install
 #ng build --prod --build-optimizer &
 cd ../executor
 pip2 install -r requirements.txt
-nohup python2 executor_server.py &
+python2 executor_server.py &
