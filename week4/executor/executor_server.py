@@ -2,7 +2,6 @@ import json
 import executor_utils as eu
 
 from flask import Flask
-from gevent.pywsgi import WSGIServer
 from flask import request
 from flask import jsonify
 
