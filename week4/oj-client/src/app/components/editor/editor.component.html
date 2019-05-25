@@ -39,12 +39,22 @@
 
   <div id="editor"></div>
 
-  <div>
-    {{output}}
+<!--  <div>-->
+<!--    {{output}}-->
+<!--  </div>-->
+  <div class="card" *ngIf="showOutput">
+    <div class="card-body">
+      <samp>Build output: {{output.build}}</samp>
+      <hr>
+      <samp>Execute output: {{output.execute}}</samp>
+    </div>
   </div>
 
   <footer class="editor-footer">
-    <button type="submit" class="btn btn-success pull-right" (click)="submit()">Submit Solution</button>
+    <button type="submit" class="btn btn-success pull-right" (click)="submit()">
+      <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" *ngIf="showSpinner"></span>
+      Submit Solution
+    </button>
   </footer>
 
 </section>

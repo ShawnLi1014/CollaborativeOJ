@@ -22,7 +22,11 @@ export class NavbarComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.auth.userNameChange$.subscribe(username => this.username = username);
+    this.auth.userNameChange$.subscribe(username => {
+      this.username = username;
+      console.log(this.username);
+    });
+
     const debouncedInput = this.searchBox.valueChanges.pipe(debounceTime(500));
     this.subscription = debouncedInput.subscribe(term => this.input.changeInput(term));
   }

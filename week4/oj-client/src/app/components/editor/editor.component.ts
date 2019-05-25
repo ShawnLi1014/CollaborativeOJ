@@ -15,8 +15,13 @@ export class EditorComponent implements OnInit {
   language = 'Java';
 
   sessionId: string;
+  showSpinner = false;
+  showOutput = false;
 
-  output: string;
+  output = {
+    build: '',
+    execute: ''
+  };
 
   defaultContent = {
     'Java' : 'public class Example {\n' +
@@ -86,12 +91,18 @@ export class EditorComponent implements OnInit {
   }
 
   submit(): void {
+    this.showSpinner = true;
     const userCode = this.editor.getValue();
     let data = {
       user_code: userCode,
       lang: this.language.toLowerCase(),
     };
     console.log(data);
-    this.data.buildAndRun(data).then(res => this.output = res.text);
+    this.data.buildAndRun(data).then(res => {
+      this.output.build = res.build;
+      this.output.execute = res.run;
+      this.showOutput = true;
+      this.showSpinner = false;
+    });
   }
 }

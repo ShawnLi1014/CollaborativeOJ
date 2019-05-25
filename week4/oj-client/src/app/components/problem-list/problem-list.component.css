@@ -28,6 +28,10 @@
   background-color: #8d16e2;
 }
 
-.list-group {
+.problem-list {
   margin-top: 20px;
+}
+
+#toast-container > div {
+  opacity:1;
 }

@@ -20,6 +20,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { SearchPipe } from './pipes$/search.pipe';
 import {InputService} from './services/input.service';
+import { LandingComponent } from './components/landing/landing.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {InputService} from './services/input.service';
     ProfileComponent,
     EditorComponent,
     SearchPipe,
+    LandingComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,22 @@
 <div class="container">
   <app-new-problem></app-new-problem>
-  <div class="list-group">
-    <a class="list-group-item list-group-item-action" *ngFor="let problem of problems | search: searchTerm" [routerLink]="['/problems', problem.id]" >
-      <span class="{{'pull-left badge difficulty diff-' + problem.difficulty.toLocaleLowerCase()}}">{{problem.difficulty | uppercase}}</span>
-      <strong class="title">{{problem.id}}. {{problem.name}}</strong>
-    </a>
+  <div class="problem-list">
+
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Title</th>
+        <th scope="col">Difficulty</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let problem of problems | search: searchTerm" [routerLink]="['/problems', problem.id]">
+        <th scope="row">{{problem.id}}</th>
+        <td>{{problem.name}}</td>
+        <td><span class="{{'badge badge-pill difficulty diff-' + problem.difficulty.toLocaleLowerCase()}}">{{problem.difficulty | uppercase}}</span></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
