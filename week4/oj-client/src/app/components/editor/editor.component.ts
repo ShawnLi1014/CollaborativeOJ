@@ -52,10 +52,22 @@ export class EditorComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.sessionId = params['id'];
-      this.initEditor();
+      /** TODO: if a user access the problem without a sessionId,  
+          give him a unique sessionId, else if a user access with a sessionId,
+          i.e. he is from the link shared by another user, then sessionId is that sessionId 
+      */
+      console.log(params);
+      // this.sessionId = params['id'];
+      // this.initEditor();
       console.log(params['id']);
     });
+    this.route.queryParams.subscribe(queryParams => {
+      console.log(queryParams);
+      if(queryParams['sessionId']) {
+        this.sessionId = queryParams['sessionId'];
+        this.initEditor();
+      }
+    })
   }
 
   initEditor() {

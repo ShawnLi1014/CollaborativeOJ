@@ -11,7 +11,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let problem of problems | search: searchTerm" [routerLink]="['/problems', problem.id]">
+      <tr *ngFor="let problem of problems | search: searchTerm" [routerLink]="['/problems', problem.id]" [queryParams]="{sessionId: sessionId}">
         <th scope="row">{{problem.id}}</th>
         <td>{{problem.name}}</td>
         <td><span class="{{'badge badge-pill difficulty diff-' + problem.difficulty.toLocaleLowerCase()}}">{{problem.difficulty | uppercase}}</span></td>

@@ -9,7 +9,7 @@ export class SearchPipe implements PipeTransform {
   transform(problems: Problem[], term: string): Problem[] {
 
     return problems.filter(
-      problem => problem.name.toLowerCase().includes(term)
+      problem => problem.name.toLowerCase().includes(term.toLowerCase())
     );
   }
 

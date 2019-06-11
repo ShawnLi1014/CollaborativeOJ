@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import { Problem } from '../../models/problem.model';
 import {Subscription} from 'rxjs';
+import * as shortid from 'shortid'
 
 @Component({
   selector: 'app-problem-list',
@@ -10,6 +11,7 @@ import {Subscription} from 'rxjs';
 export class ProblemListComponent implements OnInit {
 
   problems: Problem[] = [];
+  sessionId: any;
   subscriptionProblems: Subscription;
   subscriptionInput: Subscription;
 
@@ -18,6 +20,8 @@ export class ProblemListComponent implements OnInit {
               @Inject('input') private input) { }
 
   ngOnInit() {
+    console.log(shortid.generate());
+    this.sessionId = shortid.generate();
     this.getProblems();
     this.getSearchTerm();
   }
