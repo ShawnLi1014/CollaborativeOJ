@@ -11,9 +11,9 @@ Angular7
 
 ## Demo
 ### *Collaborative Editing
-![Collaborative editing](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Collaborative editing](https://github.com/ShawnLi1014/CollaborativeOJ/blob/master/week4/demo/Collaborative%20editing.gif?raw=true)
 ### *Code Execuation
-![Code Execuation](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Code Execuation](https://github.com/ShawnLi1014/CollaborativeOJ/blob/master/week4/demo/Code%20Execuation.gif?raw=true)
 
 ## How to have this project run on your computer
 1. Have redis and Docker run on your computer
